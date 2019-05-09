@@ -41,7 +41,13 @@ export class ChatService {
   }
 
   login( provider: string ) {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+
+    if ( provider == 'google'){
+      this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    } else {
+      this.afAuth.auth.signInWithPopup(new auth.GithubAuthProvider());
+
+    }
   }
   logout() {
     this.usuario = {};
